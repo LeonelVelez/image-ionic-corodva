@@ -5,7 +5,7 @@ ARG IONIC_VERSION="5.4.16"
 ARG ANDROID_SDK_VERSION="3859397"
 ARG ANDROID_HOME="/opt/android-sdk"
 ARG ANDROID_BUILD_TOOLS_VERSION="26.0.2"
-
+USER root
 ENV ANDROID_HOME "${ANDROID_HOME}"
 
 RUN apt-get update \
@@ -21,7 +21,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y nodejs \
     && npm install -g cordova ionic@${IONIC_VERSION} \
-    && npm install -g cordova-res  \	
+    && npm install --unsafe-perm -g cordova-res  \	
     && cd /tmp \
     && curl -fSLk https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_VERSION}.zip -o sdk-tools-linux-${ANDROID_SDK_VERSION}.zip \
     && unzip sdk-tools-linux-${ANDROID_SDK_VERSION}.zip \
