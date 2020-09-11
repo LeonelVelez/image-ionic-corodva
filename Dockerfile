@@ -21,6 +21,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y nodejs \
     && npm install -g cordova ionic@${IONIC_VERSION} \
+    && npm install -g cordova-res  \	
     && cd /tmp \
     && curl -fSLk https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_VERSION}.zip -o sdk-tools-linux-${ANDROID_SDK_VERSION}.zip \
     && unzip sdk-tools-linux-${ANDROID_SDK_VERSION}.zip \
